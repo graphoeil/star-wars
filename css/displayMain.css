@@ -1,0 +1,141 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+/* /////////////////////////////// */
+/*               BODY              */
+/* /////////////////////////////// */
+body,html{ -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; height: 100%; }
+*{ box-sizing: border-box; text-decoration: none; outline: none; }
+
+/* /////////////////////////////// */
+/*          TYPOS & COULEURS       */
+/* /////////////////////////////// */
+:root{
+	/* Typos */
+	--roboto: 'Roboto', sans-serif;
+	/* Couleurs */
+	--grisFooter: #9b9b9b;
+	--noirTransparent: rgba(0,0,0,0);
+	--noir90: rgba(0,0,0,0.9);
+	--noir80: rgba(0,0,0,0.8); 
+	--noir70: rgba(0,0,0,0.7);
+}
+
+/* /////////////////////////////// */
+/*              HEADER             */
+/* /////////////////////////////// */
+header{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+.innerHeader{ width: 100%; background-color: var(--noirTransparent); transition: 0.35s background ease-in-out; }
+.innerHeader.ombre{ background-color: var(--noir80); }
+/* Btn menu mobile */
+.btnMenuMobile{ position: absolute; top: 0; right: 0; width: 75px; height: 65px; pointer-events: visible; z-index: 100; }
+.barresMenuMobile{ position: absolute; top: 23px; right: 25px; width: 34px; height: 22px; }
+.barresMenuMobile span{ display: block; position: absolute; left: 0; width: 100%; height: 4px; border-radius: 5px; 
+	background-color: white; transition: 0.35s ease-in-out; }
+.barresMenuMobile span:nth-child(1){ top: 0; }
+.barresMenuMobile span:nth-child(2){ top: 9px; }
+.barresMenuMobile span:nth-child(3){ top: 18px; }
+.barresMenuMobile.ouvert span:nth-child(1){ top: 10px; transform: rotate(135deg); }
+.barresMenuMobile.ouvert span:nth-child(2){ opacity: 0; left: 100%; }
+.barresMenuMobile.ouvert span:nth-child(3){ top: 10px; transform: rotate(-135deg); }
+.barresMenuMobile.scroll span{ background-color: black; box-shadow: 0 0 10px rgba(255,255,255,0.7), 0 0 10px rgba(255,255,255,0.7), 0 0 10px rgba(255,255,255,0.7); }
+.barresMenuMobile.scroll.ouvert span{ background-color: white; }
+/* Overlay */
+.overlay{ position: absolute; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; 
+	background: url('../images/header-bg.png'); background-size: cover;
+	opacity: 0; transition: 0.5s opacity ease-in-out; z-index: 10; }
+.overlay.visible{ opacity: 1; pointer-events: visible; }
+/* Navigation */
+nav{ position: absolute; width: 100%; top: 50%; left: 0; transform: translateY(-50%); 
+	pointer-events: none; opacity: 0; transition: 0.35s opacity ease-in-out;
+	text-align: center; z-index: 99; }
+nav.visible{ opacity: 1; pointer-events: visible; }
+nav a{ display: block; padding: 10px; margin: 0 0 20px 0; color: white; font-family: var(--roboto); 
+	font-weight: 700; font-size: 20px; letter-spacing: 0.3px; text-transform: uppercase; }
+nav a:last-child{ margin: 0; }
+
+/* /////////////////////////////// */
+/*               HERO              */
+/* /////////////////////////////// */
+.hero{ position: relative; width: 100%; height: 375px; background: url('../images/header-bg.png'); 
+	background-size: cover; overflow: hidden; }
+.heroLogo{ position: absolute; width: 100%; max-width: 550px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.heroLogo img{ display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* /////////////////////////////// */
+/*              ARTICLE            */
+/* /////////////////////////////// */
+section.centre{ position: relative; width: 100%; max-width: 1024px; margin: 0 auto; }
+article{ width: 100%; padding: 16px; font-family: var(--roboto); text-align: center; }
+article.gauche{ text-align: left; }
+article.marginTop{ margin: 10px 0 0 0; }
+article h1{ font-size: 22px; font-weight: 700; margin: 20px 0; }
+article h2{ margin: 0 0 20px 0; font-size: 28px; line-height: 1.3em; font-weight: 700; text-align: center; }
+article p{ font-size: 18px; margin: 0 0 20px 0; line-height: 1.6em; }
+article p strong{ font-weight: 700; font-style: italic; }
+article p em{ font-style: italic; }
+.pub{ display: none; }
+.ligne{ width: 100%; }
+.ligneGauche, .ligneDroite{ width: 100%; height: 100%; margin: 0 0 20px 0; }
+.ligneGauche img{ display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* /////////////////////////////// */
+/*          IMAGES FULLWIDTH       */
+/* /////////////////////////////// */
+.imgFullWidth{ width: 100%; height: 375px; }
+.imgFullWidth img{ display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* /////////////////////////////// */
+/*              FOOTER             */
+/* /////////////////////////////// */
+footer{ font-family: var(--roboto); background: url('../images/darthvader.jpg') no-repeat top center; background-size: cover; }
+.innerFooter{ padding: 30px 15px; text-align: center; }
+.innerFooter h5{ font-weight: 700; font-size: 14px; color: var(--grisFooter); margin: 0 0 30px 0; }
+.innerFooter .colFooter{ display: inline-block; width: 49%; vertical-align: middle; }
+.innerFooter .colFooter:last-child{ display: block; width: 100%; }
+.colFooter a{ display: block; font-size: 12px; color: var(--grisFooter); text-decoration: underline; margin: 0 0 20px 0; }
+.innerFooter .colFooter:last-child{ margin: 20px 0; }
+.innerFooter .colFooter:last-child h6{ display: inline-block; color: var(--grisFooter); text-transform: uppercase; margin: 0 16px 0 0; font-size: 12px; }
+.innerFooter .colFooter:last-child .socialFooter{ display: inline-block; vertical-align: middle; }
+.innerFooter .colFooter:last-child .socialFooter a{ display: inline-block; margin: 0 16px 0 0; }
+.innerFooter .colFooter:last-child .socialFooter a:last-child{ margin: 0; }
+
+/* /////////////////////////////// */
+/*     >= 1024px | iPad paysage    */
+/* /////////////////////////////// */
+@media only screen and (min-width: 1024px){
+	/* Header */
+	header{ height: auto; pointer-events: visible; }
+	.btnMenuMobile, .overlay{ display: none; }
+	nav{ display: inline-block; position: relative; top: 0; transform: none; opacity: 1; padding: 10px 0; pointer-events: visible; }
+	nav a{ display: inline-block; margin: 0 20px 0 0; font-size: 14px; }
+	/* Hero */
+	.hero{ height: 600px; }
+	.heroLogo{ top: 53%; max-width: 740px; }
+	/* Article */
+	section.centre{ padding: 30px; }
+	article{ width: 60%; text-align: left; }
+	article.articleFullWidth{ width: 100%; }
+	article h2{ margin: 0 0 40px 0; }
+	.pub{ display: block; position: absolute; top: 50px; right: 30px; }
+	.ligne{ display: -ms-flexbox;display: -webkit-flex; display: flex;
+		-webkit-flex-direction: row;-ms-flex-direction: row; flex-direction: row;
+		-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap; flex-wrap: nowrap;
+		-webkit-justify-content: center;-ms-flex-pack: center; justify-content: center;
+		-webkit-align-content: stretch;-ms-flex-line-pack: stretch; align-content: stretch;
+		-webkit-align-items: stretch;-ms-flex-align: stretch; align-items: stretch; }
+	.ligneGauche{ display: inline-block; width: 40%; }
+	.ligneDroite{ display: inline-block; width: 60%; padding: 0 0 0 30px; }
+	/* Fullwidth */
+	.imgFullWidth{ height: 500px; }
+	.imgFullWidth.fixed{ clip-path: inset(0); }
+	.imgFullWidth.fixed img{ position: fixed; left: 0; top: 0; }
+	/* Footer */
+	footer{ background: url('../images/darthvader_2x.jpg') no-repeat top center; background-size: contain; background-color: #181818; }
+	.innerFooter{ padding: 80px 50px; }
+	.innerFooter h6{ margin: 0 0 40px 0; }
+	.innerFooter .colFooter{ width: 33%; vertical-align: top; }
+	.innerFooter .colFooter:last-child{ display: inline-block; width: 33%; margin: 0 !important; }
+	.innerFooter .colFooter:last-child h6{  display: block; margin: 0 0 10px 0;}
+}
