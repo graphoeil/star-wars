@@ -7,12 +7,18 @@
 	// Top initiaux
 	const topSectionParalaxe = [];
 	window.addEventListener('DOMContentLoaded', () => {
-		paralaxes.forEach((paralaxe) => {
-			topSectionParalaxe.push(paralaxe.parentElement.getBoundingClientRect().top);
-		});
-		// Event listener
-		window.addEventListener('scroll', checkParalaxe);
-		window.dispatchEvent(new Event('scroll'));
+		// Reset scroll
+		setTimeout(() => {
+			window.scrollTo(0,0);
+		},20);
+		// Top section & vents listener
+		setTimeout(() => {
+			paralaxes.forEach((paralaxe) => {
+				topSectionParalaxe.push(paralaxe.parentElement.getBoundingClientRect().top);
+			});
+			window.addEventListener('scroll', checkParalaxe);
+			window.dispatchEvent(new Event('scroll'));
+		},50);
 	});
 
 	// Check paralaxe
@@ -21,17 +27,16 @@
 		paralaxes.forEach((paralaxe, index) => {
 			// Contenu ?
 			if (paralaxe.classList.contains('contenu')){
-				const inertie = paralaxe.dataset.inertie;
-				const mouvement = (scrollY / inertie);
 				const topParent = topSectionParalaxe[index];
 				const sectionParent = paralaxe.parentElement;
-				const topParalaxe = paralaxe.getBoundingClientRect().top;
-				const hauteurParalaxe = paralaxe.getBoundingClientRect().height;
 				const hauteurParent = sectionParent.getBoundingClientRect().height;
-				if (scrollY >= topParent/3 && topParalaxe >= 0 - (hauteurParent - hauteurParalaxe)/2){
-					paralaxe.style.top = `${ mouvement }px`;
+				if ((topParent - scrollY <= 200) && scrollY <= (topParent + hauteurParent - 100)){
+					const distance = (topParent + hauteurParent) - scrollY;
+					if ((distance/10 < 130) && (distance/10 > 60)){
+						paralaxe.style.transform = `translateY(${ (130 - (distance/10)) }%)`;
+					}
 				}
-				if (scrollY <= 25){ paralaxe.removeAttribute('style'); }
+				if (scrollY <= 20){ paralaxe.removeAttribute('style'); }
 			} else {
 				const inertie = paralaxe.dataset.inertie;
 				const mouvement = -(scrollY / inertie);
