@@ -118,7 +118,7 @@ footer{ font-family: var(--roboto); background: url('../images/darthvader.jpg') 
 	article{ width: 60%; text-align: left; }
 	article.articleFullWidth{ width: 100%; }
 	article h2{ margin: 0 0 40px 0; }
-	.pub{ display: block; position: absolute; top: 50px; right: 30px; }
+	.pub{ display: block; position: absolute; top: 75px; right: 30px; }
 	.ligne{ display: -ms-flexbox;display: -webkit-flex; display: flex;
 		-webkit-flex-direction: row;-ms-flex-direction: row; flex-direction: row;
 		-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap; flex-wrap: nowrap;
